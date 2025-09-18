@@ -1,35 +1,34 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import Login from "./pages/Login/Login";
+import Register from "./pages/Register/Register";
+import Board from "./pages/Board/Board";
+import Completed from "./pages/Completed/Completed";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [user, setUser] = useState(null);
+  const [page, setPage] = useState("login");
+  const [completed, setCompleted] = useState([]);
+
+  if (!user) {
+    return page === "register" ? <Register setPage={setPage} /> : <Login setUser={setUser} setPage={setPage} />;
+  }
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div>
+      <button onClick={() => setPage("board")}>
+        할일
+      </button>
+      <button onClick={() => setPage("completed")}>
+        완료된 할일
+      </button>
+      <button onClick={() => setUser(null)}>
+        로그아웃
+      </button>
+
+      {page === "board" && <Board user={user} setCompleted={setCompleted} />}
+      {page === "completed" && <Completed completed={completed} />}
+    </div>
+  );
 }
 
-export default App
+export default App;
