@@ -1,5 +1,6 @@
+/** @jsxImportSource @emotion/react */
 import { useEffect, useState } from "react";
-import { addTask, getTasks } from "../../apis/board";
+import { addTask, getTasks } from "../../apis/Board";
 import * as s from "./style";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
@@ -30,17 +31,15 @@ function Board({ user, setCompleted }) {
   useEffect(() => { fetchTasks(); }, []);
 
   return (
-    <div style={s.Container}>
-      <h1>
-        {user}(님)의 할일
-      </h1>
-      <Input placeholder="할일 입력" value={content} onChange={(e) => setContent(e.target.value)} />
-      <Button onClick={handleAddTask}>
-        추가
-      </Button>
-      <ul style={{ listStyle: "none", padding: 0 }}>
+    <div css={s.container}>
+      <h1>{user}의 할일</h1>
+      <div css={s.inputContainer}>
+        <Input placeholder="할일 입력" value={content} onChange={(e) => setContent(e.target.value)} />
+        <Button onClick={handleAddTask}>추가</Button>
+      </div>
+      <ul css={s.taskList}>
         {tasks.map((task) => (
-          <li key={task.id} style={s.TaskItem(task.completed)}>
+          <li key={task.id} css={s.taskItem(task.completed)}>
             <input type="checkbox" checked={task.completed} onChange={() => toggleComplete(task.id)} />
             {task.content}
           </li>

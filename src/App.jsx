@@ -9,25 +9,13 @@ function App() {
   const [page, setPage] = useState("login");
   const [completed, setCompleted] = useState([]);
 
-  if (!user) {
-    return page === "register" ? <Register setPage={setPage} /> : <Login setUser={setUser} setPage={setPage} />;
-  }
-
   return (
-    <div>
-      <button onClick={() => setPage("board")}>
-        할일
-      </button>
-      <button onClick={() => setPage("completed")}>
-        완료된 할일
-      </button>
-      <button onClick={() => setUser(null)}>
-        로그아웃
-      </button>
-
+    <>
+      {page === "login" && <Login setUser={setUser} setPage={setPage} />}
+      {page === "register" && <Register setPage={setPage} />}
       {page === "board" && <Board user={user} setCompleted={setCompleted} />}
       {page === "completed" && <Completed completed={completed} />}
-    </div>
+    </>
   );
 }
 
