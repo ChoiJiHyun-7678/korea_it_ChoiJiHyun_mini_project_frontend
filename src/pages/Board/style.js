@@ -12,7 +12,7 @@ export const container = css`
 export const inputContainer = css`
   display: flex;
   gap: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 19px;
 `;
 
 export const taskList = css`
