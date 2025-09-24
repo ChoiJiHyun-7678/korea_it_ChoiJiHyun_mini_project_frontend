@@ -1,3 +1,4 @@
+// src/pages/Login/style.js
 import { css } from "@emotion/react";
 
 export const container = css`
@@ -14,7 +15,6 @@ export const form = css`
   display: flex;
   flex-direction: column;
   width: 300px;
-
   gap: 10px;
 `;
 
@@ -22,4 +22,5 @@ export const title = css`
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 20px;
+  color: green;
 `;

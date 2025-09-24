@@ -1,5 +1,13 @@
-import axios from "axios";
-const api = axios.create({ baseURL: "http://localhost:8080/api" });
+export const getTasks = async (username) => {
+  const res = await fetch(`http://localhost:8080/api/tasks/${username}`);
+  return res.json();
+};
 
-export const addTask = (username, task) => api.post(`/tasks/${username}`, task);
-export const getTasks = (username) => api.get(`/tasks/${username}`);
+export const addTask = async (username, task) => {
+  const res = await fetch(`http://localhost:8080/api/tasks/${username}`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(task),
+  });
+  return res.json();
+};

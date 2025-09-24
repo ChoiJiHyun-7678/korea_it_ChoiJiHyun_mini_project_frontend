@@ -36,7 +36,9 @@ function Board({ user, setCompleted }) {
 
   return (
     <div css={s.container}>
-      <h1>{user}의 할일</h1>
+      <h1>
+        {user}의 할일
+      </h1>
       <div css={s.inputContainer}>
         <Input
           placeholder="할일 입력"
@@ -47,7 +49,9 @@ function Board({ user, setCompleted }) {
       </div>
       <ul css={s.taskList}>
         {tasks.map((task) => (
-          <li key={task.id} css={s.taskItem(task.completed)}>
+          <li 
+            key={task.id} css={s.taskItem(task.completed)}
+          >
             <input
               type="checkbox"
               checked={task.completed}

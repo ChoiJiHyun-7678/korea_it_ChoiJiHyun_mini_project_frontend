@@ -19,7 +19,7 @@ function Login({ setUser, setPage }) {
         alert("아이디 또는 비밀번호 오류");
       }
     } catch {
-      alert("서버 오류");
+      alert("로그인 실패");
     }
   };
 
@@ -40,8 +40,13 @@ function Login({ setUser, setPage }) {
           onChange={(e) => setPassword(e.target.value)}
         />
 
+        {/* 기본 버튼: 진한 회색 + 흰 글씨 */}
         <Button onClick={handleLogin}>로그인</Button>
-        <Button onClick={() => setPage("register")}>회원가입으로</Button>
+
+        {/* 회원가입 버튼: 흰 배경 + 검정 글씨 */}
+        <Button onClick={() => setPage("register")} variant="blackText">
+          회원가입으로
+        </Button>
       </div>
     </div>
   );
