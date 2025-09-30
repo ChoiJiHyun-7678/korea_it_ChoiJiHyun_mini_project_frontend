@@ -10,7 +10,7 @@ function Input({ value, onChange, placeholder, type = "text", style }) {
         padding: "8px",
         margin: "5px",
         borderRadius: "4px",
-        border: "1px solid #ccc",
+        border: "1px solid #999",
         ...style,
       }}
     />
